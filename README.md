@@ -1,5 +1,5 @@
 # docker-webdav
-WebDAV and web page directory listing server
+WebDAV and web file browser server
 
 Default read/write and no authorization. I use it behind a proxy that
 handles security.
