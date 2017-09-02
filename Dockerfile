@@ -1,6 +1,14 @@
-FROM golang:1.8-onbuild
+FROM golang:1.9 as builder
+RUN mkdir -p /go/src/app
+WORKDIR /go/src/app
+COPY *.go /go/src/app
+RUN go get && go install -installsuffix netgo -tags netgo
+
+FROM scratch
+COPY --from=builder /go/bin/app /
+
 ENV LISTEN :8080
 ENV ROOT /webdav
 ENV PREFIX /
-USER nobody
 EXPOSE 8080/tcp
+ENTRYPOINT ["/app"]
