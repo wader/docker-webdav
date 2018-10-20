@@ -1,4 +1,4 @@
-FROM golang:1.10 as builder
+FROM golang:1.11 as builder
 RUN mkdir -p /go/src/app
 WORKDIR /go/src/app
 COPY *.go /go/src/app
